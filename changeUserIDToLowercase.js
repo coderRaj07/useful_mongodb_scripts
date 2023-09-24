@@ -18,6 +18,8 @@ async function userIdLowerCase() {
           
         let count = 1;
         for (let i = 0; i < users.length; i++) {
+            //take values from the objects created from .lean()
+            //and use those values to update the schemas         
             const user = get(users, i);
             await User.findOneAndUpdate({_id: new ObjectId(user._id)}, {$set: {userid: user.userid.toLowerCase()}}).catch((err) => {
                 console.log(err);
